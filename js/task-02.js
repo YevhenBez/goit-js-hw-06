@@ -7,30 +7,19 @@ const ingredients = [
   'Condiments',
 ];
 
-const firstLi = document.createElement('li');
-firstLi.textContent = ingredients[0];
-firstLi.classList.add('item');
+const ingredientsListEl = document.querySelector('#ingredients');
 
-const secondLi = document.createElement('li');
-secondLi.textContent = ingredients[1];
-secondLi.classList.add('item');
+const createItem = (textForItem) => {
+  const ingredientItemEl = document.createElement('li');
+  ingredientItemEl.textContent = textForItem;
+  ingredientItemEl.classList.add('item');
+  return ingredientItemEl;
+}
 
-const thirdLi = document.createElement('li');
-thirdLi.textContent = ingredients[2];
-thirdLi.classList.add('item');
+const insertItems = (array) => {
+  ingredientsListEl.append(...array.map((element) => createItem(element)))
+}
 
-const fourthLi = document.createElement('li');
-fourthLi.textContent = ingredients[3];
-fourthLi.classList.add('item');
+insertItems(ingredients);
 
-const fifthLi = document.createElement('li');
-fifthLi.textContent = ingredients[4];
-fifthLi.classList.add('item');
-
-const sixthLi = document.createElement('li');
-sixthLi.textContent = ingredients[5];
-sixthLi.classList.add('item');
-
-const list = document.querySelector('#ingredients');
-
-list.append(firstLi, secondLi, thirdLi, fourthLi, fifthLi, sixthLi);
+console.log(ingredientsListEl);
