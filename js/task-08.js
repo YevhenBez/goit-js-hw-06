@@ -7,21 +7,18 @@ form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event) {
     event.preventDefault();
 
-    const mail = event.currentTarget.elements.email.value;
+    const {
+        elements: { email, password },
+    } = event.currentTarget
 
-    const passwordKey = event.currentTarget.elements.password.value;
-
-    if (mail === "" || passwordKey === "") {
-        alert(message);
-    }
+    const mailAndPassword = { email: email.value, password: password.value };
     
-    const mailAndPassword = {
-
+    if (mailAndPassword.email === "" || mailAndPassword.password === "") {
+        alert(message);
+        return;
     };
 
-    mailAndPassword.email = mail;
-
-    mailAndPassword.password = passwordKey;
-
     console.log(mailAndPassword);
+
+    event.currentTarget.reset();
 }
